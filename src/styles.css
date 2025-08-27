@@ -1,3 +1,72 @@
 body {
+  margin: 0;
+}
+
+input {
+  all: unset;
+}
+
+textarea,
+select,
+input {
+  field-sizing: content;
+}
+
+.banner {
+  padding: 20px 40px;
+  text-align: start;
+  background: grey;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#main-content {
+  width: 80%;
+  border: 1px solid blue;
+}
+
+#content {
+  max-width: 100%;
+  border: 1px solid red;
+  display: flex;
+  height: 100vh;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background: 1px solid lime;
+  padding: 10px 20px;
+  background: rgba(233, 233, 233, 0.8);
+}
+
+#sidebar>* {
+  margin:10px 30px;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.add-project-btn {
+  color: white;
+  background: orange;
+  border: none;
+}
+
+.search-input {
+  border: 1px solid grey;
+  max-width: auto;
+  color: black;
+  border: 1px solid red;
+}
+
+.task-sort-options-dropdown {
   color: dodgerblue;
+}
+
+.selected-title {
+  background: black;
+  color: white;
 }
