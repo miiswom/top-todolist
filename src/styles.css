@@ -20,14 +20,14 @@ input {
   font-weight: bold;
 }
 
-#main-content {
+#main {
   width: 80%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 #content {
   max-width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   height: 100vh;
 }
@@ -41,8 +41,8 @@ input {
   background: rgba(233, 233, 233, 0.8);
 }
 
-#sidebar>* {
-  margin:10px 30px;
+#sidebar > * {
+  margin: 10px 30px;
   padding: 8px;
   border-radius: 8px;
   text-align: center;
@@ -59,7 +59,6 @@ input {
   border: 1px solid grey;
   max-width: auto;
   color: black;
-  border: 1px solid red;
 }
 
 .task-sort-options-dropdown {
@@ -69,4 +68,31 @@ input {
 .selected-title {
   background: black;
   color: white;
+}
+
+.main-title {
+  color: #ffff;
+  font-size: 1.4em;
+  background: black;
+  padding: 10px 40px;
+  margin: 10px auto 10px 10px;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+#main h3 {
+  margin: 10px auto 10px 30px;
+    font-weight: bold;
+
+}
+
+.projects-div {
+  margin: 10px auto 10px 30px;
+  padding: 20px;
+}
+
+.projects-div h4 {
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
 }
