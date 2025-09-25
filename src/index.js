@@ -8,4 +8,4 @@ loadHeader();
 
 loadContent();
 
-loadProjects()
+loadProjects();

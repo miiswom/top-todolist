@@ -49,6 +49,13 @@ input {
   font-size: 1rem;
 }
 
+.chevron-left {
+  width: 20px;
+  border: 1px solid black;
+  background: black;
+  fill: #ffff;
+}
+
 .add-project-btn {
   color: white;
   background: orange;
@@ -96,3 +103,4 @@ input {
   font-weight: bold;
   border-bottom: 1px solid black;
 }
+

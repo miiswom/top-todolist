@@ -1,32 +1,40 @@
 // *** Sidebar *** //
-import { addProjectBtn } from "./sidebar-add-project-btn";
-import { searchInput } from "./sidebar-search-input";
-import { sortTasksDropdown, loadTasksDropdownOptions } from "./sidebar-tasks-dropdown";
-import { projectsSelectDropdown, loadProjectsDropdownOptions } from "./sidebar-projects-dropdown";
-const sidebar = document.querySelector("#sidebar");
+import { addProjectBtn } from './sidebar-add-project-btn';
+import { searchInput } from './sidebar-search-input';
+import {
+  sortTasksDropdown,
+  loadTasksDropdownOptions,
+} from './sidebar-tasks-dropdown';
+import {
+  projectsSelectDropdown,
+  loadProjectsDropdownOptions,
+} from './sidebar-projects-dropdown';
+import chevronLeftImg from '../asset/chevron-left.svg';
 
-const dueTodayTitle = document.createElement("h3");
-const upcomingTitle = document.createElement("h3");
+const sidebar = document.querySelector('#sidebar');
 
-sidebar.classList.add("#sidebar");
+const dueTodayTitle = document.createElement('h3');
+const upcomingTitle = document.createElement('h3');
+const chevronLeft = document.createElement('img');
 
-dueTodayTitle.textContent = "Today";
-dueTodayTitle.classList.add("selected-title");
+sidebar.classList.add('#sidebar');
 
-upcomingTitle.textContent = "Upcoming";
+dueTodayTitle.textContent = 'Today';
+dueTodayTitle.classList.add('selected-title');
 
-
+upcomingTitle.textContent = 'Upcoming';
+chevronLeft.src = chevronLeftImg;
+chevronLeft.classList.add('chevron-left');
 
 // *******/ LOGICS ********
 export function loadSidebar() {
+  sidebar.appendChild(chevronLeft);
   sidebar.appendChild(addProjectBtn);
   sidebar.appendChild(searchInput);
   sidebar.appendChild(sortTasksDropdown);
   sidebar.appendChild(dueTodayTitle);
   sidebar.appendChild(upcomingTitle);
-  sidebar.appendChild(projectsSelectDropdown)
-  loadTasksDropdownOptions()
-  loadProjectsDropdownOptions()
-};
-
-
+  sidebar.appendChild(projectsSelectDropdown);
+  loadTasksDropdownOptions();
+  loadProjectsDropdownOptions();
+}
