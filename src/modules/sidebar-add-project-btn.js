@@ -1,4 +1,12 @@
-export const addProjectBtn = document.createElement("button");
+// import plusImg from "../asset/plus.svg"
 
-addProjectBtn.textContent = "Add New Project";
-addProjectBtn.classList.add("add-project-btn");
+// export const addProjectBtn = document.createElement("li");
+// const icon = document.createElement("img");
+// const label = document.createElement("p")
+
+// icon.src = plusImg
+// label.textContent = "Add New Project"
+// addProjectBtn.classList.add("list-icon");
+// icon.classList.add("icons")
+// addProjectBtn.appendChild(icon)
+// addProjectBtn.appendChild(label)

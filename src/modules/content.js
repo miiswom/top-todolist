@@ -6,7 +6,7 @@ export const contentDiv = document.querySelector('#content');
 
 
 function loadContent() {
-loadSidebar();
+// loadSidebar();
 loadMain();
 }
 

@@ -41,35 +41,44 @@ input {
   background: rgba(233, 233, 233, 0.8);
 }
 
-#sidebar > * {
-  margin: 10px 30px;
-  padding: 8px;
+/* #sidebar > * {
+  margin: 10px auto;
+  font-size: 1rem; 
+} */
+
+#sidebar > ul {
+  display: flex;
+  gap: 10px
+}
+
+#sidebar-nav {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+
+
+.icons {
   border-radius: 8px;
-  text-align: center;
-  font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  /* background: black; */
+  /* margin: 0 auto; */
 }
 
-.chevron-left {
-  width: 20px;
-  border: 1px solid black;
-  background: black;
-  fill: #ffff;
+.list-icon {
+  border: 1px solid orange;
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
-.add-project-btn {
-  color: white;
-  background: orange;
-  border: none;
-}
-
-.search-input {
-  border: 1px solid grey;
-  max-width: auto;
-  color: black;
-}
-
-.task-sort-options-dropdown {
-  color: dodgerblue;
+.list-icon p {
+  align-self: center;
+  color: lime;
 }
 
 .selected-title {
@@ -89,8 +98,7 @@ input {
 
 #main h3 {
   margin: 10px auto 10px 30px;
-    font-weight: bold;
-
+  font-weight: bold;
 }
 
 .projects-div {
@@ -104,3 +112,13 @@ input {
   border-bottom: 1px solid black;
 }
 
+#sidebar.collapsed {
+  width: 100px;
+  color: lime;
+}
+
+@media (max-width: 600px) {
+  .list-icon {
+    flex-direction: column;
+  }
+}
