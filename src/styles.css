@@ -90,11 +90,6 @@ input {
   padding: 10px;
 }
 
-.selected-title {
-  background: black;
-  color: white;
-}
-
 .main-title {
   color: #ffff;
   font-size: 1.4em;
@@ -111,9 +106,9 @@ input {
 }
 
 .projects-div {
-  margin: 10px auto 10px 30px;
+  margin: 10px 30px;
   padding: 20px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .projects-div h4 {
@@ -129,6 +124,10 @@ input {
 
 .projects-div li a {
   cursor: pointer;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-task-btn {
@@ -159,7 +158,7 @@ input {
 }
 
 .project-item ul {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100px;
 }
 

@@ -12,12 +12,6 @@ const closeBtn = document.querySelector('#closeModal');
 
 const sidebarNav = document.querySelector('#sidebar-nav');
 
-// sidebarNav.children.item(0).addEventListener("click", () => {
-//   sidebar.classList.toggle('collapsed')
-// })
-
-console.log(sidebarNav.children.namedItem('lool'));
-
 const sidebarList = [
   {
     id: 'collapsedLeft',
@@ -32,17 +26,17 @@ const sidebarList = [
     classFn: 'openModal',
   },
   {
-    id: 'openSearch',
+    id: 'enterSearch',
     icon: searchImg,
     label: 'Search by keyword...',
     classFn: 'openModal',
   },
-  {
-    id: 'openSort',
-    icon: sliderImg,
-    label: 'Sort Items',
-    classFn: 'openModal',
-  },
+  // {
+  //   id: 'openSort',
+  //   icon: sliderImg,
+  //   label: 'Sort Items',
+  //   classFn: 'openModal',
+  // },
   // {
   //   icon: todayImg,
   //   label: "Due Today"
@@ -61,16 +55,15 @@ const sidebarList = [
   },
 ];
 
-export function loadSibarNav() {
+function loadSibarNav() {
   for (let item of sidebarList) {
     console.log('id', item.id);
     // create li element
     const li = document.createElement('li');
     li.id = item.id;
 
-    // add list-icons class to li element
+    // add list-icons class and event appropriately according to classFn, to li element
     li.classList.add('list-icon');
-    // li.classList.add(item.classFn);
     li.addEventListener('click', () => {
       addClassFn(item.id, item.classFn);
     });
@@ -98,7 +91,7 @@ export function loadSibarNav() {
 function addClassFn(id, classFn) {
   const el = document.getElementById(id);
   if (id.startsWith('collapsed')) {
-    el.parentElement.parentElement.classList.toggle('collapsed');
+    el.parentElement.parentElement.classList.toggle(classFn);
   } else if (id.startsWith('open')) {
     modal.classList.remove('hidden');
     modal.classList.add('open');
@@ -109,3 +102,5 @@ function addClassFn(id, classFn) {
     });
   }
 }
+
+export { loadSibarNav, addClassFn };
