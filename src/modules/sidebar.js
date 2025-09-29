@@ -4,8 +4,14 @@ import searchImg from '../asset/search.svg';
 import sliderImg from '../asset/sliders.svg';
 import clockImg from '../asset/clock.svg';
 import listImg from '../asset/list.svg';
-// find due today image
+
+const sidebar = document.querySelector('#sidebar');
+
 const sidebarNav = document.querySelector('#sidebar-nav');
+
+sidebar.addEventListener("click", () => {
+  sidebar.classList.toggle('collapsed')
+})
 
 const sidebarList = [
   {
@@ -43,25 +49,29 @@ export function loadSibarNav() {
     // create li element
     const li = document.createElement('li');
 
-    // add list-icons class
+    // add list-icons class to li element
     li.classList.add('list-icon');
 
     // create img element
     const image = document.createElement('img');
     image.src = item.icon;
 
-    // add icons class
+    // add icons class to img element
     image.classList.add('icons');
 
     // create p element
     const label = document.createElement('p');
     label.textContent = item.label;
 
-    // append img & p to li
+    // append image & label to li
     li.appendChild(image);
     li.appendChild(label);
 
-    // append li to sidebarNav
+    // append li element to sidebarNav
     sidebarNav.appendChild(li);
   }
+}
+
+function collaspeSidebar() {
+  sidebar.add
 }

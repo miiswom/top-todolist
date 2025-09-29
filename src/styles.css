@@ -36,9 +36,9 @@ input {
   display: flex;
   flex-direction: column;
   width: 20%;
-  background: 1px solid lime;
   padding: 10px 20px;
   background: rgba(233, 233, 233, 0.8);
+  transition: all 0.4s ease;
 }
 
 /* #sidebar > * {
@@ -68,7 +68,7 @@ input {
 }
 
 .list-icon {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   margin: 0 auto;
   display: flex;
   width: 80%;
@@ -78,7 +78,12 @@ input {
 
 .list-icon p {
   align-self: center;
-  color: lime;
+  /* color: lime; */
+}
+
+.list-icon img {
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .selected-title {
@@ -113,8 +118,16 @@ input {
 }
 
 #sidebar.collapsed {
-  width: 100px;
-  color: lime;
+  width: 80px;
+}
+
+#sidebar .list-icon p {
+  transition: opacity 0.3s ease;
+}
+
+#sidebar.collapsed .list-icon p{
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 600px) {
