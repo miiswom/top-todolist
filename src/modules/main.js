@@ -1,5 +1,5 @@
 // *** Main *** //
-
+import plusImg from '../asset/plus.svg';
 const mainContent = document.querySelector('#main');
 mainContent.classList.add('#main');
 
@@ -21,7 +21,6 @@ const projectsList = [
   },
 ];
 
-
 const projectTitle = document.createElement('h3');
 const projectsDiv = document.createElement('div');
 
@@ -32,16 +31,39 @@ function loadMain() {
   mainContent.appendChild(mainTitle);
   mainContent.appendChild(projectTitle);
   mainContent.appendChild(projectsDiv);
-  loadProjects()
+  loadProjects();
 }
 
 function loadProjects() {
   for (let project of projectsList) {
     console.log(project.title);
+    const li = document.createElement('li');
+    const tasks = document.createElement('ul');
+    li.classList.add('project-item');
+    const projTitleDiv = document.createElement('div');
     const projTitle = document.createElement('h4');
     projTitle.textContent = project.title;
-    projectsDiv.appendChild(projTitle);
-  }
-};
 
-export {loadMain} ;
+    const addTaskBtn = document.createElement('a');
+    addTaskBtn.classList.add('add-task-btn');
+    addTaskBtn.addEventListener('click', () => {
+      addATask;
+    });
+    const image = document.createElement('img');
+    image.src = plusImg;
+
+    addTaskBtn.appendChild(image);
+    projectsDiv.appendChild(li);
+    li.appendChild(projTitleDiv);
+    projTitleDiv.appendChild(projTitle);
+    projTitleDiv.appendChild(addTaskBtn);
+    li.appendChild(tasks);
+  }
+}
+// Inside projects-div
+// create project-item (ul)
+// create project-item li
+// create project-item li h4
+// create project-item li a > img
+// create project-item li ul*
+export { loadMain };

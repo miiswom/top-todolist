@@ -6,6 +6,11 @@ input {
   all: unset;
 }
 
+ul,
+li {
+  display: inline-block;
+}
+
 textarea,
 select,
 input {
@@ -48,7 +53,7 @@ input {
 
 #sidebar > ul {
   display: flex;
-  gap: 10px
+  gap: 10px;
 }
 
 #sidebar-nav {
@@ -57,7 +62,6 @@ input {
   flex-direction: column;
   /* border: 1px solid red; */
 }
-
 
 .icons {
   border-radius: 8px;
@@ -109,12 +113,54 @@ input {
 .projects-div {
   margin: 10px auto 10px 30px;
   padding: 20px;
+  border: 1px solid red;
 }
 
 .projects-div h4 {
   padding: 10px;
   font-weight: bold;
-  border-bottom: 1px solid black;
+}
+
+.projects-div li {
+  /* display: flex; */
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.projects-div li a {
+  cursor: pointer;
+}
+
+.add-task-btn {
+  max-width: 40px;
+}
+
+.add-task-btn img {
+  width: 100%;
+  margin: 0 auto;
+}
+.add-task-btn img:hover {
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid blue; */
+  gap: 10px;
+}
+
+.project-item div {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid lime; */
+  border-bottom: 3px solid black;
+}
+
+.project-item ul {
+  border: 1px solid red;
+  width: 100%;
 }
 
 #sidebar.collapsed {
@@ -125,7 +171,7 @@ input {
   transition: opacity 0.3s ease;
 }
 
-#sidebar.collapsed .list-icon p{
+#sidebar.collapsed .list-icon p {
   opacity: 0;
   pointer-events: none;
 }
