@@ -1,3 +1,5 @@
+// *** loadProjects ***
+
 import plusImg from '../../asset/plus.svg';
 import { addUtil } from '../utils';
 import { projectsList } from './projectsList';

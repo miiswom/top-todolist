@@ -1,3 +1,5 @@
+// *** sidebarList ***
+
 import chevronLeftImg from '../../asset/chevron-left.svg';
 import plusImg from '../../asset/plus.svg';
 import searchImg from '../../asset/search.svg';

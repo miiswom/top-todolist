@@ -1,4 +1,4 @@
-// *** Main *** //
+// *** loadMain *** //
 import { loadProjects } from './loadProjects';
 
 const mainContent = document.querySelector('#main');

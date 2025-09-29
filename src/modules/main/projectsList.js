@@ -1,3 +1,5 @@
+// *** projectsList ***
+
 export const projectsList = [
   {
     title: 'Work',
