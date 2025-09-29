@@ -1,0 +1,44 @@
+.modal {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+
+.modal.open {
+  opacity: 1;
+  z-index: 999;
+}
+
+.modal-inner {
+  background: #ffff;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 03);
+  padding: 20px 40px;
+  text-align: center;
+  width: 50%;
+  height: 60vh;
+  border: 1px solid black;
+}
+
+.modal-inner h2 {
+  margin: 0;
+}
+
+.modal-inner p {
+  line-height: 24px;
+  margin: 10px 0;
+}
+
+.hidden {
+  display: none;
+}

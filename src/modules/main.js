@@ -1,5 +1,6 @@
 // *** Main *** //
 import plusImg from '../asset/plus.svg';
+// import { openModal } from './modal-popup';
 const mainContent = document.querySelector('#main');
 mainContent.classList.add('#main');
 
@@ -37,17 +38,22 @@ function loadMain() {
 function loadProjects() {
   for (let project of projectsList) {
     console.log(project.title);
+    // create li element
     const li = document.createElement('li');
-    const tasks = document.createElement('ul');
     li.classList.add('project-item');
+
+    // create div that will contain proJTitle and addTask btn
     const projTitleDiv = document.createElement('div');
     const projTitle = document.createElement('h4');
-    projTitle.textContent = project.title;
-
     const addTaskBtn = document.createElement('a');
-    addTaskBtn.classList.add('add-task-btn');
+    projTitle.textContent = project.title;
+    // addTaskBtn.classList.add('#add-task-btn');
+
+    // create ul that will contain tasks
+    const tasks = document.createElement('ul');
+
     addTaskBtn.addEventListener('click', () => {
-      addATask;
+      openModal;
     });
     const image = document.createElement('img');
     image.src = plusImg;
