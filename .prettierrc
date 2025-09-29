@@ -4,5 +4,5 @@
   "singleQuote": true,
     "bracketSameLine": true,
   "objectWrap": "collapse",
-  "printWidth": 100
+  "printWidth": 120
 }
