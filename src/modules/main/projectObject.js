@@ -1,0 +1,4 @@
+const projectObject = {
+  title: "",
+  todos: []
+}

@@ -1,4 +1,4 @@
-import { projectsList } from './main/projectsList';
+import { taskObject } from "./main/taskObject";
 const modal = document.querySelector('#modal');
 const closeBtn = document.querySelector('#closeModal');
 const addingBtn = document.querySelector('#adding');
@@ -24,12 +24,14 @@ export function addUtil(id, classFn) {
   }
 }
 
-function addTask(e) {
+export function addTask(e) {
   if (inputText.value === '' && errorText.textContent === '') {
     errorText.textContent = 'Cannot submit an empty task.';
     // errorText.classList.add('error-text');
     modalInner.appendChild(errorText);
   } else if (inputText.value.length > 0) {
+    console.log(taskObject.checkbox)
+    console.log(taskObject.title)
     const tasks = document.querySelector('#tasks');
     const newTask = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -65,3 +67,9 @@ export function getStoredTasks(project) {
   return stored;
 }
 
+export function setTodos(proj) {
+  let todos = JSON.parse(localStorage.getItem(proj));
+  console.log(todos === null);
+  if (todos === null) todos = [];
+  return todos;
+}

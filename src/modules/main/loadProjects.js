@@ -4,6 +4,7 @@ import plusImg from '../../asset/plus.svg';
 import { addUtil, getStoredTasks } from '../utils';
 import { projectsList } from './projectsList';
 import { projectsDiv } from './loadMain';
+import { todoObject } from './taskObject';
 
 export function loadProjects() {
   for (let project of projectsList) {

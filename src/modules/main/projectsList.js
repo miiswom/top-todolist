@@ -1,4 +1,5 @@
 // *** projectsList ***
+import { setTodos } from "../utils";
 
 export const projectsList = [
   {
@@ -7,26 +8,18 @@ export const projectsList = [
   },
   {
     title: 'Groceries',
-    todos: [],
+    todos: setTodos('Groceries'),
   },
   {
     title: 'Lunchboxes',
-    todos: [],
+    todos: setTodos('Lunchboxes'),
   },
 ];
-// ****** localStorage ******
+
+// ****** store projectList in localStorage ******
 projectsList.forEach((project) => {
+  // create
   localStorage.setItem(project.title, JSON.stringify(project.todos));
 });
 
-function setTodos(proj) {
-  let todos = JSON.parse(localStorage.getItem(proj));
-  console.log(todos === null);
-  if (todos === null) {
-    todos = [];
-  } else {
-    console.log("todos", todos)
-    console.log(JSON.stringify(document.body))
-  }
-  return todos;
-}
+
