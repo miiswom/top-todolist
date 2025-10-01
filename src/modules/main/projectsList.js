@@ -1,8 +1,5 @@
 // *** projectsList ***
-import { setTodos } from "../utils";
-
-//
-export const newProjects = [];
+import { setTodos } from '../utils';
 
 export const projectsList = [
   {
@@ -18,8 +15,6 @@ export const projectsList = [
     todos: setTodos('Lunchboxes'),
   },
 ];
-
-
 
 // ****** store projectList in localStorage ******
 projectsList.forEach((project) => {
