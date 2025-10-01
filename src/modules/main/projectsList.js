@@ -21,5 +21,3 @@ projectsList.forEach((project) => {
   // create
   localStorage.setItem(project.title, JSON.stringify(project.todos));
 });
-
-
