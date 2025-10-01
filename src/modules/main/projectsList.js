@@ -1,5 +1,5 @@
 // *** projectsList ***
-import { setTodos } from '../utils';
+import { appendTasks, createTask, setTodos } from '../utils';
 
 export const projectsList = [
   {

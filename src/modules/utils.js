@@ -28,33 +28,20 @@ function addUtil(id) {
 }
 
 function addTask() {
-  if (inputText.value === '' && errorText.textContent === '') {
+  if (inputText.value.length === 0 && errorText.textContent === '') {
     errorText.textContent = 'Cannot submit an empty task.';
     modalInner.appendChild(errorText);
   } else {
-    /*   ****************   */
     const tasks = document.querySelector('#tasks');
-    const newTask = document.createElement('li');
-    const checkbox = document.createElement('input');
-    const title = document.createElement('p');
+    const projectTitle = tasks.parentNode.id;
+    const newTaskTitle = inputText.value;
+    const existingTasks = JSON.parse(localStorage.getItem(projectTitle));
+    const newTaskObj = createTask(projectTitle, newTaskTitle);
 
-    newTask.classList.add('new-task');
-    checkbox.type = 'checkbox';
-    title.textContent = inputText.value;
-    /*   ****************   */
+    existingTasks.push({ title: newTaskTitle });
+    localStorage.setItem(projectTitle, JSON.stringify(existingTasks));
 
-    const existingTasks = getExistingTasks(tasks.parentNode.id);
-    console.log('parentNode', tasks.parentNode.id);
-
-    existingTasks.push({
-      title: title.textContent,
-    });
-
-    localStorage.setItem(tasks.parentNode.id, JSON.stringify(existingTasks));
-
-    newTask.appendChild(checkbox);
-    newTask.appendChild(title);
-    tasks.appendChild(newTask);
+    tasks.appendChild(newTaskObj.li);
     inputText.value = '';
     modal.classList.add('hidden');
   }
@@ -88,13 +75,13 @@ function removeTask(projectTitle, taskTitle) {
 
   let taskIndex;
 
-  existingTasks
-    .find((t, i) => {
+  existingTasks.find((t, i) => {
       if (t.title === taskTitle) {
         taskIndex = i;
       }
     })
-    .splice(taskIndex, 1);
+    
+    existingTasks.splice(taskIndex, 1);
 
   console.log(taskIndex);
   console.log(existingTasks);
@@ -151,7 +138,7 @@ function createProject(projectTitle) {
   projectObj.tasksList.id = `tasks`;
 
   projectsDiv.appendChild(projectObj.li);
-  
+
   projectObj.addTaskBtn.appendChild(projectObj.image);
   projectObj.li.appendChild(projectObj.container);
   projectObj.container.appendChild(projectObj.title);
@@ -159,7 +146,7 @@ function createProject(projectTitle) {
   projectObj.addTaskBtn.appendChild(projectObj.span);
   projectObj.li.appendChild(projectObj.tasksList);
 
-  return projectObj
+  return projectObj;
 }
 
 export { addUtil, addTask, getExistingTasks, setTodos, appendTasks, removeTask, createTask, createProject };
