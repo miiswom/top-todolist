@@ -1,7 +1,7 @@
 // *** loadProjects ***
 
 import plusImg from '../../asset/plus.svg';
-import { addUtil } from '../utils';
+import { addUtil, getStoredTasks } from '../utils';
 import { projectsList } from './projectsList';
 import { projectsDiv } from './loadMain';
 
@@ -17,6 +17,22 @@ export function loadProjects() {
     const span = document.createElement('span');
 
     li.classList.add('project-item');
+    li.id = project.title;
+
+    const stored = getStoredTasks(project.title);
+    appendTasks(tasks, stored);
+    // storedTasks.forEach((task) => {
+    //   const newTask = document.createElement('li');
+    //   const checkbox = document.createElement('input');
+    //   const title = document.createElement('p');
+
+    //   newTask.classList.add('new-task');
+    //   checkbox.type = 'checkbox';
+    //   title.textContent = inputText.value;
+
+    //   tasks.appendChild(newTask);
+    // });
+
     addTaskBtn.id = 'openAddTask';
     projTitle.textContent = project.title;
     span.textContent = 'Add';
@@ -24,6 +40,7 @@ export function loadProjects() {
     addTaskBtn.addEventListener('click', () => {
       addUtil(addTaskBtn.id);
     });
+    tasks.id = 'tasks';
 
     addTaskBtn.appendChild(image);
     projectsDiv.appendChild(li);
@@ -34,3 +51,24 @@ export function loadProjects() {
     li.appendChild(tasks);
   }
 }
+
+function appendTasks(tasks, proj) {
+  for (let task of proj) {
+    console.log('task', task);
+    const t = document.createElement('li');
+    const checkbox = document.createElement('input');
+    const title = document.createElement('p');
+
+    t.classList.add('new-task')
+    checkbox.type = 'checkbox';
+    title.textContent = task.title;
+
+    t.appendChild(checkbox);
+    t.appendChild(title);
+    tasks.appendChild(t);
+  }
+}
+
+// storeTasks({ title: 'new task' });
+// storeTasks({ title: 'bla task' });
+// storeTasks({ title: 'skdoskdvsdkmf sdkdm' });
