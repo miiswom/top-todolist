@@ -63,6 +63,12 @@ input  {
   /* border: 1px solid red; */
 }
 
+.small-icons {
+  width: 15px;
+  justify-self: end;
+}
+
+
 .icons {
   border-radius: 8px;
   width: 30px;
@@ -182,7 +188,8 @@ input  {
 
 .new-task {
   display: flex;
-  width: fit-content;
+  width: 60%;
+  /* width: fit-content; */
   border: 1px solid lime;
 }
 

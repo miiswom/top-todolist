@@ -1,19 +1,19 @@
-import { taskObject } from "./main/taskObject";
 const modal = document.querySelector('#modal');
 const closeBtn = document.querySelector('#closeModal');
 const addingBtn = document.querySelector('#adding');
 const inputText = document.querySelector('#inputText');
 const modalInner = document.querySelector('#modalInner');
 const errorText = document.querySelector('#errorText');
+import { projectsList } from "./main/projectsList";
 
 addingBtn.addEventListener('click', () => {
   addTask();
 });
 
-export function addUtil(id, classFn) {
+export function addUtil(id ) {
   const el = document.getElementById(id);
   if (id.startsWith('collapsed')) {
-    el.parentElement.parentElement.classList.toggle(classFn);
+    el.parentElement.parentElement.classList.toggle('collapsed');
   } else if (id.startsWith('open')) {
     modal.classList.remove('hidden');
     modal.classList.add('open');
@@ -24,14 +24,13 @@ export function addUtil(id, classFn) {
   }
 }
 
-export function addTask(e) {
+export function addTask() {
   if (inputText.value === '' && errorText.textContent === '') {
     errorText.textContent = 'Cannot submit an empty task.';
-    // errorText.classList.add('error-text');
     modalInner.appendChild(errorText);
-  } else if (inputText.value.length > 0) {
-    console.log(taskObject.checkbox)
-    console.log(taskObject.title)
+  } else {
+
+    /*   ****************   */
     const tasks = document.querySelector('#tasks');
     const newTask = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -40,15 +39,16 @@ export function addTask(e) {
     newTask.classList.add('new-task');
     checkbox.type = 'checkbox';
     title.textContent = inputText.value;
+    /*   ****************   */
 
-    const stored = getStoredTasks(tasks.parentNode.id);
-    console.log('stored', stored);
+    const existingTasks = getExistingTasks(tasks.parentNode.id);
+    console.log('parentNode', tasks.parentNode.id);
 
-    stored.push({
+    existingTasks.push({
       title: title.textContent,
     });
 
-    localStorage.setItem(tasks.parentNode.id, JSON.stringify(stored));
+    localStorage.setItem(tasks.parentNode.id, JSON.stringify(existingTasks));
 
     newTask.appendChild(checkbox);
     newTask.appendChild(title);
@@ -58,18 +58,17 @@ export function addTask(e) {
   }
 }
 
-export function getStoredTasks(project) {
-  // *** localStorage
-  const stored = JSON.parse(localStorage.getItem(project));
-  // stored.push(task);
-  localStorage.setItem(project, JSON.stringify(stored));
-  console.log(JSON.stringify(stored));
-  return stored;
+export function getExistingTasks(projectTitle) {
+  // *** localStorage ***
+  const existingTasks = JSON.parse(localStorage.getItem(projectTitle));
+  localStorage.setItem(projectTitle, JSON.stringify(existingTasks));
+  return existingTasks;
 }
 
-export function setTodos(proj) {
-  let todos = JSON.parse(localStorage.getItem(proj));
-  console.log(todos === null);
-  if (todos === null) todos = [];
+export function setTodos(projectTitle) {
+  let todos = JSON.parse(localStorage.getItem(projectTitle));
+  if (todos === null) {
+    todos = [];
+  }
   return todos;
 }
