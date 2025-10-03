@@ -1,6 +1,7 @@
 import plusImg from '../asset/plus.svg';
 import trashImg from '../asset/trash.svg';
 import { mainObj } from './main';
+import { loadMain } from './main/loadMain';
 
 const modal = document.querySelector('#modal');
 const closeBtn = document.querySelector('#closeModal');
@@ -30,28 +31,30 @@ function addUtil(id, projectTitle) {
 }
 
 function addTask() {
-  if (inputText.value.length === 0 && errorText.textContent === '') {
-    errorText.textContent = 'Cannot submit an empty task.';
-    modalInner.appendChild(errorText);
-  } else {
-    console.log();
-    const tasks = document.querySelector(`#${currentProjectTitle}`);
-    const newTaskTitle = inputText.value;
-    console.log('newTaskTitle', newTaskTitle);
+  // if (inputText.value.length === 0 && errorText.textContent === '') {
+  //   errorText.textContent = 'Cannot submit an empty task.';
+  //   modalInner.appendChild(errorText);
+  // } else {
+  inputText.required;
+  console.log(inputText.required);
 
-    const existingTasks = JSON.parse(localStorage.getItem(currentProjectTitle));
-    console.log('existingTasks', existingTasks);
-    console.log('projectTitle', currentProjectTitle);
+  const tasks = document.querySelector(`#${currentProjectTitle}`);
+  const newTaskTitle = inputText.value;
+  console.log('newTaskTitle', newTaskTitle);
 
-    const newTaskObj = createTask(currentProjectTitle, newTaskTitle);
+  const existingTasks = JSON.parse(localStorage.getItem(currentProjectTitle));
+  console.log('existingTasks', existingTasks);
+  console.log('projectTitle', currentProjectTitle);
 
-    existingTasks.push({ title: newTaskTitle });
-    localStorage.setItem(currentProjectTitle, JSON.stringify(existingTasks));
+  const newTaskObj = createTask(currentProjectTitle, newTaskTitle, tasks);
 
-    tasks.appendChild(newTaskObj.li);
-    inputText.value = '';
-    modal.classList.add('hidden');
-  }
+  existingTasks.push({ title: newTaskTitle });
+  localStorage.setItem(currentProjectTitle, JSON.stringify(existingTasks));
+
+  tasks.appendChild(newTaskObj.li);
+  inputText.value = '';
+  modal.classList.add('hidden');
+  //}
 }
 
 function getExistingTasks(projectTitle) {
@@ -71,32 +74,26 @@ function setTodos(projectTitle) {
 
 function appendTasks(tasksList, existingTasks, projectTitle) {
   for (let task of existingTasks) {
-    const taskObj = createTask(projectTitle, task.title);
+    const taskObj = createTask(projectTitle, task.title, tasksList);
     tasksList.appendChild(taskObj.li);
   }
 }
 
-function removeTask(projectTitle, taskTitle) {
+function removeTask(projectTitle, taskTitle, tasksList) {
   const existingTasks = JSON.parse(localStorage.getItem(projectTitle));
+
+  const taskIndex = existingTasks.map((t) => t.title).indexOf(taskTitle);
+  console.log(taskIndex, taskTitle);
   console.log(existingTasks);
 
-  let taskIndex;
-
-  existingTasks.find((t, i) => {
-    if (t.title === taskTitle) {
-      taskIndex = i;
-    }
-  });
-
-  existingTasks.splice(taskIndex, 1);
-
-  console.log(taskIndex);
+  existingTasks.splice(taskIndex, taskIndex + 1);
   console.log(existingTasks);
   localStorage.setItem(projectTitle, JSON.stringify(existingTasks));
-  window.location.reload();
+  window.location.reload()
+  // appendTasks(tasksList, existingTasks, projectTitle)
 }
 
-function createTask(projectTitle, taskTitle) {
+function createTask(projectTitle, taskTitle, tasksList) {
   const taskObj = {
     li: document.createElement('li'),
     checkbox: document.createElement('input'),
@@ -111,7 +108,7 @@ function createTask(projectTitle, taskTitle) {
   taskObj.title.textContent = taskTitle;
   taskObj.removeImg.src = trashImg;
   taskObj.removeBtn.addEventListener('click', () => {
-    removeTask(projectTitle, taskTitle);
+    removeTask(projectTitle, taskTitle, tasksList);
   });
 
   taskObj.removeBtn.appendChild(taskObj.removeImg);

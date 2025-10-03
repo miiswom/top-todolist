@@ -1,18 +1,18 @@
 // *** projectsList ***
-import { appendTasks, createTask, setTodos } from '../utils';
+import { setTodos } from '../utils';
 
 export const projectsList = [
   {
     title: 'work',
-    todos: setTodos('Work'),
+    todos: setTodos('work'),
   },
   {
     title: 'groceries',
-    todos: setTodos('Groceries'),
+    todos: setTodos('groceries'),
   },
   {
     title: 'lunchboxes',
-    todos: setTodos('Lunchboxes'),
+    todos: setTodos('lunchboxes'),
   },
 ];
 

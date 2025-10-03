@@ -13,7 +13,7 @@ li {
 
 textarea,
 select,
-input  {
+input {
   field-sizing: content;
 }
 
@@ -67,7 +67,6 @@ input  {
   width: 15px;
   justify-self: end;
 }
-
 
 .icons {
   border-radius: 8px;
@@ -165,7 +164,7 @@ input  {
 
 .project-item ul {
   /* border: 1px solid red; */
-  width: 100px;
+  width: 100%;
 }
 
 #sidebar.collapsed {
@@ -187,16 +186,16 @@ input  {
 }
 
 .new-task {
-  display: flex;
-  /* width: 90%; */
-  /* gap: 10px; */
-  /* width: fit-content; */
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 4fr 1fr;
+  background: rgb(249, 209, 150);
   border-bottom: 1px solid black;
 }
 
-.new-task > * {
-  color: red;
-  border: 1px solid red;
+
+.new-task > p {
+  text-align: start;
 }
 
 @media (max-width: 600px) {

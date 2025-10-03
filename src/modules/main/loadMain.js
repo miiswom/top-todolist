@@ -3,9 +3,7 @@ import { loadProjects } from './loadProjects';
 import { createMain } from '../main.js';
   
 
-function loadMain() {
+export function loadMain() {
   createMain()
   loadProjects();
 }
-
-export { loadMain };
