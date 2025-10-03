@@ -1,6 +1,6 @@
 import plusImg from '../asset/plus.svg';
 import trashImg from '../asset/trash.svg';
-import { projectsDiv } from './main/loadMain';
+import { mainObj } from './main';
 
 const modal = document.querySelector('#modal');
 const closeBtn = document.querySelector('#closeModal');
@@ -76,12 +76,12 @@ function removeTask(projectTitle, taskTitle) {
   let taskIndex;
 
   existingTasks.find((t, i) => {
-      if (t.title === taskTitle) {
-        taskIndex = i;
-      }
-    })
-    
-    existingTasks.splice(taskIndex, 1);
+    if (t.title === taskTitle) {
+      taskIndex = i;
+    }
+  });
+
+  existingTasks.splice(taskIndex, 1);
 
   console.log(taskIndex);
   console.log(existingTasks);
@@ -137,7 +137,7 @@ function createProject(projectTitle) {
   });
   projectObj.tasksList.id = `tasks`;
 
-  projectsDiv.appendChild(projectObj.li);
+  mainObj.projectsDiv.appendChild(projectObj.li);
 
   projectObj.addTaskBtn.appendChild(projectObj.image);
   projectObj.li.appendChild(projectObj.container);
@@ -149,4 +149,36 @@ function createProject(projectTitle) {
   return projectObj;
 }
 
-export { addUtil, addTask, getExistingTasks, setTodos, appendTasks, removeTask, createTask, createProject };
+function createNavItem(item) {
+  const navItemObj = {
+    li: document.createElement('li'),
+    image: document.createElement('img'),
+    label: document.createElement('p'),
+  };
+
+  navItemObj.li.id = item.id;
+  navItemObj.li.classList.add('list-icon');
+  navItemObj.li.addEventListener('click', () => {
+    addUtil(item.id, item.classFn);
+  });
+  navItemObj.image.src = item.icon;
+  navItemObj.image.classList.add('icons');
+  navItemObj.label.textContent = item.label;
+
+  navItemObj.li.appendChild(navItemObj.image);
+  navItemObj.li.appendChild(navItemObj.label);
+
+  return navItemObj;
+}
+
+export {
+  addUtil,
+  addTask,
+  getExistingTasks,
+  setTodos,
+  appendTasks,
+  removeTask,
+  createTask,
+  createProject,
+  createNavItem,
+};

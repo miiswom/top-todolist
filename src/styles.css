@@ -182,15 +182,21 @@ input  {
 }
 
 #tasks {
-  border: 1px solid red;
-  width: 80%;
+  /* border: 1px solid red; */
+  width: 100%;
 }
 
 .new-task {
   display: flex;
-  width: 60%;
+  /* width: 90%; */
+  /* gap: 10px; */
   /* width: fit-content; */
-  border: 1px solid lime;
+  border-bottom: 1px solid black;
+}
+
+.new-task > * {
+  color: red;
+  border: 1px solid red;
 }
 
 @media (max-width: 600px) {
