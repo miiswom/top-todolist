@@ -3,15 +3,15 @@ import { appendTasks, createTask, setTodos } from '../utils';
 
 export const projectsList = [
   {
-    title: 'Work',
+    title: 'work',
     todos: setTodos('Work'),
   },
   {
-    title: 'Groceries',
+    title: 'groceries',
     todos: setTodos('Groceries'),
   },
   {
-    title: 'Lunchboxes',
+    title: 'lunchboxes',
     todos: setTodos('Lunchboxes'),
   },
 ];

@@ -8,19 +8,21 @@ const addingBtn = document.querySelector('#adding');
 const inputText = document.querySelector('#inputText');
 const modalInner = document.querySelector('#modalInner');
 const errorText = document.querySelector('#errorText');
+let currentProjectTitle = '';
 
 addingBtn.addEventListener('click', () => {
   addTask();
 });
 
-function addUtil(id) {
+function addUtil(id, projectTitle) {
   const el = document.getElementById(id);
   if (id.startsWith('collapsed')) {
     el.parentElement.parentElement.classList.toggle('collapsed');
   } else if (id.startsWith('open')) {
     modal.classList.remove('hidden');
     modal.classList.add('open');
-
+    currentProjectTitle = projectTitle;
+    console.log(currentProjectTitle);
     closeBtn.addEventListener('click', () => {
       modal.classList.remove('open');
     });
@@ -32,14 +34,19 @@ function addTask() {
     errorText.textContent = 'Cannot submit an empty task.';
     modalInner.appendChild(errorText);
   } else {
-    const tasks = document.querySelector('#tasks');
-    const projectTitle = tasks.parentNode.id;
+    console.log();
+    const tasks = document.querySelector(`#${currentProjectTitle}`);
     const newTaskTitle = inputText.value;
-    const existingTasks = JSON.parse(localStorage.getItem(projectTitle));
-    const newTaskObj = createTask(projectTitle, newTaskTitle);
+    console.log('newTaskTitle', newTaskTitle);
+
+    const existingTasks = JSON.parse(localStorage.getItem(currentProjectTitle));
+    console.log('existingTasks', existingTasks);
+    console.log('projectTitle', currentProjectTitle);
+
+    const newTaskObj = createTask(currentProjectTitle, newTaskTitle);
 
     existingTasks.push({ title: newTaskTitle });
-    localStorage.setItem(projectTitle, JSON.stringify(existingTasks));
+    localStorage.setItem(currentProjectTitle, JSON.stringify(existingTasks));
 
     tasks.appendChild(newTaskObj.li);
     inputText.value = '';
@@ -128,14 +135,14 @@ function createProject(projectTitle) {
 
   projectObj.li.classList.add('project-item');
   projectObj.li.id = projectTitle;
-  projectObj.addTaskBtn.id = 'openAddTask';
-  projectObj.title.textContent = projectTitle;
+  projectObj.addTaskBtn.class = 'openAddTask';
+  projectObj.title.textContent = projectTitle.toUpperCase();
   projectObj.span.textContent = 'Add';
   projectObj.image.src = plusImg;
   projectObj.addTaskBtn.addEventListener('click', () => {
-    addUtil(projectObj.addTaskBtn.id, projectTitle);
+    addUtil(projectObj.addTaskBtn.class, projectTitle);
   });
-  projectObj.tasksList.id = `tasks`;
+  projectObj.tasksList.id = projectTitle;
 
   mainObj.projectsDiv.appendChild(projectObj.li);
 
