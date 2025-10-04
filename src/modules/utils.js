@@ -86,7 +86,7 @@ function removeTask(projectTitle, taskTitle, tasksList) {
   console.log(taskIndex, taskTitle);
   console.log(existingTasks);
 
-  existingTasks.splice(taskIndex, taskIndex + 1);
+  existingTasks.splice(taskIndex, 1);
   console.log(existingTasks);
   localStorage.setItem(projectTitle, JSON.stringify(existingTasks));
   window.location.reload()
